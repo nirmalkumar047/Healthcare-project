@@ -3,18 +3,20 @@ import React, { useState } from 'react';
 const DoctorChatbot = () => {
   const [userMessage, setUserMessage] = useState('');
   const [response, setResponse] = useState('');
+  const apikey = import.meta.env.VITE_DOCTOR_API_KEY;
 
   const handleChat = async () => {
     const url = 'https://ai-doctor-api-ai-medical-chatbot-healthcare-ai-assistant.p.rapidapi.com/chat?noqueue=1';
     const options = {
       method: 'POST',
       headers: {
-        'x-rapidapi-key': '2bb27dc20emshe9e9580a6e5f2d0p1d31a8jsnc3d25fd69c86',
+        'x-rapidapi-key': apikey,
         'x-rapidapi-host': 'ai-doctor-api-ai-medical-chatbot-healthcare-ai-assistant.p.rapidapi.com',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         message: userMessage,
+        
         specialization: 'general',
         language: 'en'
       })
