@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+  --primary-color: #F0BCD4;
+  --secondary-color: #50e3c2;
+  --background-color: #1F171D;
+  --background-secondary: #8A1C7C;
+  --background-tertiary: #1F0322;
+  --text-color: #fff;
+}
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Arial', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color);
+}
+p {
+  color: var(--text-color);
+}
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
