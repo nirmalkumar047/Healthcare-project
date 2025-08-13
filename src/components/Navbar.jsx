@@ -29,10 +29,7 @@ return (
                             { label: 'Service Btn 1', href: '/services/btn1' },
                             { label: 'Service Btn 2', href: '/services/btn2' }
                         ] },
-                        { label: 'Symptom checker', href: '/contact', buttons: [
-                            { label: 'Contact Btn 1', href: '/contact/btn1' },
-                            { label: 'Contact Btn 2', href: '/contact/btn2' }
-                        ] },
+                        { label: 'Symptom checker', href: '/Symptomchecker',},
                         { label: 'Find a Doctor', href: '/Doctor'  },
 
                         { label: 'Emergency', href: '/Hospital.jsx', buttons: [

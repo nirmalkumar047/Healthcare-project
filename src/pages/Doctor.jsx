@@ -3,6 +3,7 @@ import { db } from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import DoctorAssistant from './DoctorAssistant';
 import DoctorChatbot from './Ai_bots/DoctorChatbot';
+// import InstagramFollowers from './InstagramFollowers';
 
 const Doctor = () => {
   const [specialization, setSpecialization] = useState('');
@@ -76,7 +77,7 @@ const Doctor = () => {
       )}
     </div>
       <DoctorChatbot/>
-    <DoctorAssistant/>
+    
     </>
   );
 };

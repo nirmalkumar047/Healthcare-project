@@ -2,33 +2,43 @@ import React, { useState } from 'react';
 
 const DoctorChatbot = () => {
   const [userMessage, setUserMessage] = useState('');
-  const [response, setResponse] = useState('');
-  const apikey = import.meta.env.VITE_DOCTOR_API_KEY;
+  const [doctorReply, setDoctorReply] = useState(null);
+  const apikey = import.meta.env.VITE_DOCTOR_API_KEY2;
 
   const handleChat = async () => {
-    const url = 'https://ai-doctor-api-ai-medical-chatbot-healthcare-ai-assistant.p.rapidapi.com/chat?noqueue=1';
+    if (!userMessage.trim()) return;
+
+    const url =
+      'https://ai-doctor-api-ai-medical-chatbot-healthcare-ai-assistant.p.rapidapi.com/chat?noqueue=1';
+
     const options = {
       method: 'POST',
       headers: {
         'x-rapidapi-key': apikey,
-        'x-rapidapi-host': 'ai-doctor-api-ai-medical-chatbot-healthcare-ai-assistant.p.rapidapi.com',
-        'Content-Type': 'application/json'
+        'x-rapidapi-host':
+          'ai-doctor-api-ai-medical-chatbot-healthcare-ai-assistant.p.rapidapi.com',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         message: userMessage,
-        
         specialization: 'general',
-        language: 'en'
-      })
+        language: 'en',
+      }),
     };
 
     try {
       const res = await fetch(url, options);
       const data = await res.json();
-      setResponse(data.message || 'No response from AI doctor.');
+
+      const reply = data?.result?.response || null;
+
+      setDoctorReply(reply);
     } catch (error) {
       console.error('❌ API Error:', error);
-      setResponse('Something went wrong while contacting the AI doctor.');
+      setDoctorReply({
+        message:
+          'Something went wrong while contacting the AI doctor. Please try again.',
+      });
     }
   };
 
@@ -48,9 +58,36 @@ const DoctorChatbot = () => {
       >
         Ask Doctor
       </button>
-      {response && (
+
+      {doctorReply && (
         <div className="mt-4 p-3 border rounded ">
-          <strong>Doctor Says:</strong> {response}
+          {doctorReply.message && (
+            <p>
+              <strong>Doctor Says:</strong> {doctorReply.message}
+            </p>
+          )}
+
+          {doctorReply.recommendations?.length > 0 && (
+            <div className="mt-3">
+              <strong>💡 Recommendations:</strong>
+              <ul className="list-disc ml-5">
+                {doctorReply.recommendations.map((rec, idx) => (
+                  <li key={idx}>{rec}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {doctorReply.warnings?.length > 0 && (
+            <div className="mt-3 text-red-600">
+              <strong>⚠ Warnings:</strong>
+              <ul className="list-disc ml-5">
+                {doctorReply.warnings.map((warn, idx) => (
+                  <li key={idx}>{warn}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
     </div>

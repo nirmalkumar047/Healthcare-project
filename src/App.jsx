@@ -13,6 +13,7 @@ import Hospital from './pages/Emergency/Hospital';
 import Ambulance from './pages/Emergency/Ambulance';
 import Sos from './pages/Emergency/Sos';
 import Doctor from './pages/Doctor';
+import SymptomChecker from './pages/SymptomChecker';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/Emergency/Ambulance" element={<Ambulance/> } />
         <Route path="/Emergency/Sos" element={<Sos/> } />
         <Route path="/Doctor" element={<Doctor/> } />
+        <Route path='Symptomchecker' element={<SymptomChecker/> } />
         {/* more routes */}
       </Routes>
     </BrowserRouter>
