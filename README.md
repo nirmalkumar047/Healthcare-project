@@ -1,4 +1,4 @@
-🏥 HealthOne – AI-Powered Healthcare Web App
+**🏥 HealthOne – AI-Powered Healthcare Web App**
 📌 Overview
 
 HealthOne is a full-stack healthcare web application designed to make healthcare more accessible, intelligent, and user-friendly. The platform integrates AI, OCR, and multilingual support to help patients and doctors manage health checkups, prescriptions, and medical insights in a smart way.
